@@ -1,21 +1,24 @@
-//import mongoose
-const mongoose = require('mongoose');
-//import express
+//initialize express
 const express = require("express");
+//initialize api route
+const routes = require("./routes/posts-route");
 
-//instantiate the server
+// inialize the server
 const app = express();
+//set portal
+const PORT = process.env.PORT || 3001;
 
-//tells Mongoose which database we want to connect to
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/blog-posts', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+// parse incoming string or array data
+app.use(express.urlencoded({ extended: true }));
+// parse incoming JSON data
+app.use(express.json());
+//set up static
+app.use(express.static("public"));
 
-// log mongo queries being executed
-mongoose.set('debug', true);
+//api middleware
+app.use(routes);
 
-//server listens on port 3001
-app.listen(3001, () => {
-  console.log(`API server now on port 3001!`);
+//starts server
+app.listen(PORT, () => {
+  console.log(`API server now on port ${PORT}!`);
 });

@@ -5,7 +5,7 @@ const { Schema, Types } = require("mongoose");
 
 const pingSchema = new Schema(
   {
-    popularity: {
+    likes: {
       type: Schema.Types.ObjectId,
       ref: "Posts",
     },

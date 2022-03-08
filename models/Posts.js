@@ -21,9 +21,22 @@ const postsSchema = new Schema(
       get: (timestamp) => dateFormat(timestamp),
     },
     // Array of nested documents created with the pingSchema
-    reads: [pingSchema],
-    likes: [pingSchema],
-    popularity: [pingSchema],
+   likes: {
+    type: Schema.Types.ObjectId,
+    ref: "Ping",
+  },
+  popularity: {
+    type: Schema.Types.ObjectId,
+    ref: "Ping",
+  },
+  reads: {
+    type: Schema.Types.ObjectId,
+    ref: "Ping",
+  },
+  tags: {
+    type: Schema.Types.ObjectId,
+    ref: "Ping",
+  },
   },
   {
     toJSON: {
