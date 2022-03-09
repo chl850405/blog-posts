@@ -1,10 +1,10 @@
+//import request
+const request = require('request');
 //imports posts from models
 const { Posts } = require("../models");
 
-//api url
-const apiUrl = "https://api.hatchways.io/assessment/blog/posts"
-
 const postsController = {
+  
     // get all posts
     getAllPosts(req, res) {
       Posts.find({})

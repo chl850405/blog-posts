@@ -15,11 +15,11 @@ const postsSchema = new Schema(
       type: String,
     },
     //default date set at javascript Date.now
-    createdAt: {
-      type: Date,
-      default: Date.now,
-      get: (timestamp) => dateFormat(timestamp),
-    },
+    // createdAt: {
+    //   type: Date,
+    //   default: Date.now,
+    //   get: (timestamp) => dateFormat(timestamp),
+    // },
     // Array of nested documents created with the pingSchema
    likes: {
     type: Schema.Types.ObjectId,

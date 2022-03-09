@@ -20,6 +20,6 @@
   "dependencies": {
     "express": "^4.17.3",
     "mongoose": "^6.2.4",
-    "node-fetch": "^3.2.2"
+    "request": "^2.88.2"
   }
 }
