@@ -14,9 +14,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/chl850405/blog-posts/issues"
+    "url": "https://api.hatchways.io/assessment/blog/posts"
   },
-  "homepage": "https://github.com/chl850405/blog-posts#readme",
+  "homepage": "https://api.hatchways.io/assessment/blog/posts?tag=design&sortBy=id&direction=asc",
   "dependencies": {
     "express": "^4.17.3",
     "mongoose": "^6.2.4",

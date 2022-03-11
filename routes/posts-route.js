@@ -1,18 +1,17 @@
+//install express
 const router = require("express").Router();
-// const db = require ("../db/index.js")
-const {
-  getAllPosts,
-  getPostsById,
-} = require("../controllers/posts-controller");
+const db = require ("../db")
+//install controllers
+require("../controllers/posts-controller");
 
-// /api/po
+// /api/posts
 router.get("/api/posts", function (req, res) {
-  return res.json(getAllPosts);
+  return res.json(db);
 });
 
 // /api/posts/:postsId
 router.get("/api/posts/:postsId", function (req, res) {
-  return res.json(getPostsById);
+  return res.json(db);
 });
 
 module.exports = router;

@@ -4,9 +4,6 @@ const postsSchema = new Schema(
   {
     author: {
       type: String,
-      required: true,
-      unique: true,
-      trim: true,
     },
     authorId: {
       type: String,
@@ -14,35 +11,23 @@ const postsSchema = new Schema(
     tags: {
       type: String,
     },
-    //default date set at javascript Date.now
-    // createdAt: {
-    //   type: Date,
-    //   default: Date.now,
-    //   get: (timestamp) => dateFormat(timestamp),
-    // },
     // Array of nested documents created with the pingSchema
-   likes: {
-    type: Schema.Types.ObjectId,
-    ref: "Ping",
+  likes: {
+    type: String,
   },
   popularity: {
-    type: Schema.Types.ObjectId,
-    ref: "Ping",
+    type: String,
   },
   reads: {
-    type: Schema.Types.ObjectId,
-    ref: "Ping",
-  },
-  tags: {
-    type: Schema.Types.ObjectId,
-    ref: "Ping",
+    type:String,
   },
   },
+
   {
     toJSON: {
       virtuals: true,
     },
-    id: false,
+    id: false
   }
 );
 

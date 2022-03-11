@@ -3,7 +3,7 @@ const express = require("express");
 //initialize api route
 const routes = require("./routes/posts-route");
 //initialize index
-require ("./db/index")
+require ("./db/db.json")
 
 // inialize the server
 const app = express();
