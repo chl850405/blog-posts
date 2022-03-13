@@ -1,14 +1,14 @@
-//initialize express
+//import express
 const express = require("express");
+//import mongoose
+const mongoose = require('mongoose');
 //initialize api route
 const routes = require("./routes/posts-route");
-//initialize index
-require ("./db/db.json")
 
 // inialize the server
 const app = express();
 //set portal
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001 ;
 
 // parse incoming string or array data
 app.use(express.urlencoded({ extended: true }));
@@ -20,7 +20,22 @@ app.use(express.static("public"));
 //api middleware
 app.use(routes);
 
-//starts server
-app.listen(PORT, () => {
-  console.log(`API server now on port ${PORT}!`);
+//connects to mongoose
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/bl0g-p0st5', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
 });
+
+mongoose.set('debug', true);
+
+//starts server
+app.listen(PORT, () => console.log(`🌍 Connected on localhost:${PORT}`));
+
+
+
+
+
+
+
+
+

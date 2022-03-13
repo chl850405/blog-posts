@@ -10,24 +10,23 @@ const postsSchema = new Schema(
     },
     tags: {
       type: String,
+      required: true,
     },
-    // Array of nested documents created with the pingSchema
-  likes: {
-    type: String,
+    likes: {
+      type: String,
+    },
+    popularity: {
+      type: String,
+    },
+    reads: {
+      type: String,
+    },
   },
-  popularity: {
-    type: String,
-  },
-  reads: {
-    type:String,
-  },
-  },
-
   {
     toJSON: {
       virtuals: true,
     },
-    id: false
+    id: false,
   }
 );
 

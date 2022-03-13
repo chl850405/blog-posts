@@ -1,54 +1,41 @@
-
 //imports posts from models
-const { Posts } = require("../models/Posts");
+const Posts = require("../models/Posts");
 
 const postsController = {
-  
-    // get all posts
-    getAllPosts(req, res) {
-      Posts.find({})
-      res.json({sortBy:"popularity", direction: "asc" })
-        .then(PostsData => res.json(PostsData))
-        .catch(err => {
-          console.log(err);
-          res.status(400).json(err);
-        })
-        if(`tag`!= ''){
-          res.status(400).json({ message: 'Tag parameter is required!' });
-            return;
-        }
-        if(!`sortBy`){
-          res.status(400).json({ message: 'sortBy parameter is invalid!' });
-            return;
-        }
-        if(!`direction`){
-          res.status(400).json({ message: 'direction parameter is invalid!' });
-            return;
-        }
+  // get all posts
+  async getPosts({}, res) {
+    //find posts
+    Posts.find({});
+    // define an empty query document
+    const query = {};
+    // sort in ascending (1) order by length
+    const sort = { length: 1, _id: 1 };
+    const cursor = collection.find(query).sort(sort);
+    await cursor.forEach(console.dir);
 
-          return res.status(200)
-       
-    
-    },
-  
-    // get one post by id
-    getPostsById({ params }, res) {
-      Posts.findOne({_id: params.posts })
-        .then(PostsData => {
-          // If no posts is found, send 404
-          if (!PostsData) {
-            res.status(404).json({ message: 'No posts found with this id!' });
-            return;
-          }
-          res.json(PostsData);
-        })
-        .catch(err => {
-          console.log(err);
-          res.status(400).json(err);
-        });
-        return res.status(200)
-    },
-  }
+    if (!tag) {
+      return res.status(400).json({ message: "Tags parameter is required" });
+    }
+    if (
+      (sort != `science`,
+      `design`,
+      `tech`,
+      `startups`,
+      `health`,
+      `history`,
+      `culture`,
+      `politics`)
+    ) {
+      return res.status(400).json({ message: "sortBy parameter is invalid" });
+    }
+    if ((direction != `asc`, `desc`)) {
+      return res
+        .status(400)
+        .json({ message: "Direction parameter is invalid" });
+    }
 
-  module.exports = postsController;
-  
+    res.json(foundPosts);
+  },
+};
+
+module.exports = postsController;

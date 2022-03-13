@@ -1,6 +1,6 @@
 //install express
 const router = require("express").Router();
-const db = require ("../db")
+const db = require ("../db/data.json")
 //install controllers
 require("../controllers/posts-controller");
 
@@ -9,9 +9,5 @@ router.get("/api/posts", function (req, res) {
   return res.json(db);
 });
 
-// /api/posts/:postsId
-router.get("/api/posts/:postsId", function (req, res) {
-  return res.json(db);
-});
 
 module.exports = router;

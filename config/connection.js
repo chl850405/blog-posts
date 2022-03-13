@@ -1,21 +1,11 @@
 //import mongoose
 const mongoose = require('mongoose');
-//import express
-const express = require("express");
 
-//instantiate the server
-const app = express();
-
-//tells Mongoose which database we want to connect to
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/blog-posts', {
+mongoose.connect("mongodb+srv://chl850405:L3tsc0de@cluster0.gbemj.mongodb.net/bl0g-p0st5?retryWrites=true&w=majority",{
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
 });
 
-// log mongo queries being executed
-mongoose.set('debug', true);
-
-//server listens on port 3001
-app.listen(3001, () => {
-  console.log(`API server now on port 3001!`);
-});
+module.exports = mongoose.connection;
